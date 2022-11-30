@@ -92,17 +92,19 @@
                 }
             
             })
-            .state("timetable", {
+            //
+            .state("viewitem", {
                 parent:"home",
-                url: "/view/timetable",
+                url: "/view/viewitem",
                 views: {
                     'tasks@home':{
-                        templateUrl: "/views/user/timetable.html",
+                        templateUrl: "/views/user/viewitem.html",
                         controller: "fagController"
                     }   
                 }
             
             })
+            //
             .state("customsearch", {
                 parent:"home",
                 url: "/view/custom",
@@ -230,6 +232,9 @@
    
         })
         .constant("globalConfig", {
+            //
+            additem:'http://localhost:4000/api/user/additem',
+            //
             deletedata:'http://localhost:4000/api/user/deletedata',
             test1:'http://localhost:4000/api/user/test1',
             finalinsertAPI:'http://localhost:4000/api/user/finalinsertAPI',

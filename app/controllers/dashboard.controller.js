@@ -13,7 +13,7 @@
            console.log($rootScope.userLogin,$rootScope.User)
            $scope.selectdepart=function(item){
             $rootScope.selected=item;
-            $state.go('timetable');
+            $state.go('viewitem');
            }
           userService.getdept().then(function(res) { 
             $scope.deptdata=res.data;

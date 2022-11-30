@@ -58,7 +58,15 @@
         service.getarchives=getarchives;
         service.deleteshedule=deleteshedule;
         service.deletearchive=deletearchive;
+        //
+        service.additem=additem;
+        //
         return service;
+        //
+        function additem(item){
+            return $http.post(globalConfig.additem,item).then(handleSuccess , handleError("Eroor "));
+        }
+        //
         function addrooms(details){
             return $http.post(globalConfig.addrooms,details).then(handleSuccess , handleError("Eroor "));
         }
