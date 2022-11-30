@@ -1,0 +1,23 @@
+<section id="featured" class="featured">
+    <div class="container">
+
+        <div class="row pt-3" >
+
+            <div class="col-6 col-sm-3" style="margin: 2%; height: auto; width: auto;" ng-repeat="d in deptdata">
+              <div class="icon-box">
+                <button ng-click="selectdepart(d)">
+                <!-- x<i class="bi bi-card-checklist"></i> -->
+                <h3>{{d.building_name}}</h3>
+                <!-- <p>{{d.description}}
+                </p> -->
+                <img src="{{d.description}}" style="height:150px;width: 150px;;">
+      
+                </button>
+              </div>
+            </div>
+            
+          </div>
+    
+    </div>
+
+</section>
