@@ -1524,7 +1524,7 @@ router.post("/login",function(req,res){
     // });
 
 })
-.post("/getdepart",function(req,res){
+.post("/bycategory",function(req,res){
     connection.query('SELECT distinct name as  building_name,b.description FROM clmsdb.time_table tt,clmsdb.buildings b ',function(err,data){
         if(err) throw err;
         else{
@@ -1641,10 +1641,21 @@ router.post("/login",function(req,res){
     }
 })
 ///
+.post("/viewitemAPI",function(req,res){
+    console.log(req.body);
+    connection.query("SELECT * FROM clmsdb.items where category=?",[req.body.name],function(err,data){
+        if(err) throw err;
+        else{
+            // console.log(data);
+            res.send(response(true,"sucess",data));
+            
+        }
+    })
+})
 .post("/additem",checkSignIn,function(req,res){
     var item =req.body;
     console.log(item);
-    connection.query("INSERT INTO `clmsdb`.`items` (`Name`, `Des`, `link`, `quantity`, `price`) VALUES (?,?,?,?,?)",[item.name,item.desc,item.link,item.quant,item.price],function(err,data){
+    connection.query("INSERT INTO `clmsdb`.`items` (`Name`, `Des`, `link`, `quantity`, `price`,`category`) VALUES (?,?,?,?,?,?)",[item.name,item.desc,item.link,item.quant,item.price,item.category],function(err,data){
         if(err)
             throw err;
         else{

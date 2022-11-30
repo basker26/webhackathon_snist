@@ -3,15 +3,22 @@
 
         <div class="row pt-3" >
 
-            <div class="col-6 col-sm-3" style="margin: 2%; height: auto; width: auto;" ng-repeat="d in deptdata">
+            <div class="col-6 col-sm-3" style="margin: 2%; height: auto; width: auto;" ng-repeat="d in items">
               <div class="icon-box">
-                <button ng-click="selectdepart(d)">
+                <button>
                 <!-- x<i class="bi bi-card-checklist"></i> -->
-                <h3>{{d.building_name}}</h3>
+                <h3>{{d.Name}}</h3>
                 <!-- <p>{{d.description}}
                 </p> -->
-                <img src="{{d.description}}" style="height:150px;width: 150px;;">
-      
+                <img src="{{d.link}}" style="height:150px;width: 150px;;">
+                <div class="row mt-2" style="text-align: center;justify-content: space-around;">
+                  <div class="col "><div style="margin:auto">
+                    <h3 style="color: rgb(157, 243, 157);">rs:32109</h3></div>
+                  </div>
+                </div>
+                <div class="row" style="text-align: center;justify-content: space-around;">
+                  <h5><i class="bi bi-cart-plus-fill sm " ng-click="addcart(d)"></i></h5>
+                </div>
                 </button>
               </div>
             </div>

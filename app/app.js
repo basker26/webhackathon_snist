@@ -98,7 +98,7 @@
                 url: "/view/viewitem",
                 views: {
                     'tasks@home':{
-                        templateUrl: "/views/user/viewitem.html",
+                        templateUrl: "/views/user/viewitems.html",
                         controller: "fagController"
                     }   
                 }
@@ -235,52 +235,14 @@
             //
             additem:'http://localhost:4000/api/user/additem',
             //
-            deletedata:'http://localhost:4000/api/user/deletedata',
-            test1:'http://localhost:4000/api/user/test1',
-            finalinsertAPI:'http://localhost:4000/api/user/finalinsertAPI',
-            getelementAPI:'http://localhost:4000/api/user/getelementAPI',
-            undoAPI:'http://localhost:4000/api/user/undoAPI',
-            updatefacAPI:'http://localhost:4000/api/user/updatefacAPI',
-            allotwithprevious:'http://localhost:4000/api/user/allotwithprevious',
-            clearFacSubAllot:'http://localhost:4000/api/user/clearFacSubAllot',
-            facallotment: 'http://localhost:4000/api/user/facallotment',
-            facavbAPI:'http://localhost:4000/api/user/facavb',
-            getsubjectname:'http://localhost:4000/api/user/getsubjectname',
-            facdayinfoApi:'http://localhost:4000/api/user/facdayinfo',
-            subinfoAPI:'http://localhost:4000/api/user/subinfo',
-            getweekrptAPI:'http://localhost:4000/api/user/weekreport',
-            custom:'http://localhost:4000/api/user/custom',
-            getdeptrooms:'http://localhost:4000/api/user/getdeptrooms',
-            gettableh:'http://localhost:4000/api/user/gettablecourse',
-            getdeprt:'http://localhost:4000/api/user/getdepart',
-            timetabledept: 'http://localhost:4000/api/user/timetabledeprt',
-            timetableAPI: 'http://localhost:4000/api/user/timetable',
+            bycategory:'http://localhost:4000/api/user/bycategory',
+            viewitemAPI: 'http://localhost:4000/api/user/viewitemAPI',
             userLoginApi: 'http://localhost:4000/api/user/login',
             userDashboardApi:'http://localhost:4000/api/user/home',
             getTaskTypeListApi:'http://localhost:4000/api/user/home/tasktypedetails',
             userLogoutApi: 'http://localhost:4000/api/user/home/logout',
-            addfaculty:'http://localhost:4000/api/user/addfaculty',
-            getfac:'http://localhost:4000/api/user/getfac',
-            viewfac:'http://localhost:4000/api/user/viewfac',
-            active:'http://localhost:4000/api/user/active',
-            deletefac:'http://localhost:4000/api/user/deletefac',
-            addsubject:'http://localhost:4000/api/user/addsubject',
-            getusersAPI:'http://localhost:4000/api/user/getusersAPI',
             adduser:'http://localhost:4000/api/user/adduser',
-            deactivateuser:'http://localhost:4000/api/user/deactivateuser',
-            deleteuser:'http://localhost:4000/api/user/deleteuser',
             Changepassword:'http://localhost:4000/api/user/Changepassword',
-            addDepartment:'http://localhost:4000/api/user/addDepartment',
-            getrooms:'http://localhost:4000/api/user/getrooms',
-            deleteroom:'http://localhost:4000/api/user/deleteroom',
-            addsemesters:'http://localhost:4000/api/user/addsemesters',
-            deactivate:'http://localhost:4000/api/user/deactivate',
-            activaterole:'http://localhost:4000/api/user/activaterole',
-            getarchives:'http://localhost:4000/api/user/getarchives',
-            addrooms:'http://localhost:4000/api/user/addrooms',
-            deleteshedule:'http://localhost:4000/api/user/deleteshedule',
-            deletearchive:'http://localhost:4000/api/user/deletearchive',
-            deletespec:'http://localhost:4000/api/user/deletespec'
         }).run(run);
 
     run.$inject = ['$rootScope','$localStorage'];

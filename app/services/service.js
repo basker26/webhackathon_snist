@@ -19,8 +19,8 @@
         service.addfaculty=addfaculty;
         service.deletedata=deletedata;
         service.updatefac=updatefac;
-        service.getdept=getdept;
-        service.timetable=timetable;
+        service.bycategory=bycategory;
+        service.viewitem=viewitem;
         service.Login = Login;
         service.test = test;
         service.Logout=Logout;
@@ -185,16 +185,16 @@
             return $http.post(globalConfig.custom).then(handleSuccess, handleError('Error getting all user'));
 
         }
-        function getdept() {
-            return $http.post(globalConfig.getdeprt).then(handleSuccess, handleError('Error getting all user'));
+        function bycategory() {
+            return $http.post(globalConfig.bycategory).then(handleSuccess, handleError('Error getting all user'));
 
         }
         function gettableh(user) {
             return $http.post(globalConfig.gettableh,user).then(handleSuccess, handleError('Error getting all user'));
 
         }
-        function timetable(user) {
-            return $http.post(globalConfig.timetabledept , user).then(handleSuccess, handleError('Error getting all user'));
+        function viewitem(user) {
+            return $http.post(globalConfig.viewitemAPI, user).then(handleSuccess, handleError('Error getting all user'));
 
         }
         function test(user) {
