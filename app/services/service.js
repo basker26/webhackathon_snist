@@ -9,55 +9,17 @@
     function userService($http, globalConfig) {
         
         var service = {};
-        service.test1=test1;
-        service.deletespec=deletespec;
-        service.addrooms=addrooms;
-        service.getrooms=getrooms;
-        service.deleteroom=deleteroom;
-        service.getdeptrooms=getdeptrooms;
-        service.getfac=getfac;
-        service.addfaculty=addfaculty;
-        service.deletedata=deletedata;
-        service.updatefac=updatefac;
         service.bycategory=bycategory;
         service.viewitem=viewitem;
         service.Login = Login;
-        service.test = test;
         service.Logout=Logout;
         service.GetTaskList=GetTaskList;
         service.ChangePass=ChangePass;
         service.VeryPass=VeryPass;
-        service.EditUserStatus=EditUserStatus;
         service.GetTaskTypeList=GetTaskTypeList;
-        service.gettableh=gettableh;
-        service.custom=custom;
-        service.getweekrpt=getweekrpt;
-        service.allotwithprevious=allotwithprevious;
-        service.subinfo=subinfo;
-        service.facdayinfo=facdayinfo;
-        service.facavb=facavb;
-        service.getsubjectname=getsubjectname;
-        service.facallotment=facallotment;
-        service.clearFacSubAllot=clearFacSubAllot;
-        service.undo=undo;
-        service.getelement=getelement;
-        service.finalinsert=finalinsert;
-        service.viewfac=viewfac;
-        service.active=active;
-        service.deletefac=deletefac;
-        service.addsubject=addsubject;
         service.getusers=getusers;
         service.adduser=adduser;
-        service.deleteuser=deleteuser;
-        service.deactivateuser=deactivateuser;
         service.Changepassword=Changepassword;
-        service.addDepartment=addDepartment;
-        service.addsemesters=addsemesters;
-        service.deactivate=deactivate;
-        service.activaterole=activaterole;
-        service.getarchives=getarchives;
-        service.deleteshedule=deleteshedule;
-        service.deletearchive=deletearchive;
         //
         service.additem=additem;
         //

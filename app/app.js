@@ -193,16 +193,7 @@
                     }
                 }
             })
-            .state("Clear Timetable",{
-                parent:"home",
-                url:"home/ClearTimetable",
-                views:{
-                    'tasks@home':{
-                        templateUrl:"/views/timetablesetter/deleteSchedule.html",
-                        controller:"deletedata"
-                    }
-                }
-            })
+           
             .state("Add items",{
                 parent:"home",
                 url:"home/additems",
