@@ -21,8 +21,10 @@
         <label for="inputState">Role</label>
         <select id="role" name="role" class="form-control" ng-model="user.rol" required>
         <span ng-show="form.role.$dirty && form.role.$error.required" class="help-block">Role Required</span>
-          <option ng-repeat="d in data.data1" value="{{d.id}}">{{d.description}}</option>
-        </select>
+          <!-- <option ng-repeat="d in data.data1" value="{{d.id}}">{{d.description}}</option> -->
+          <option value="ROL00004">Merchant</option>
+          <option value="ROL00009">Customer</option>
+                  </select>
       </div> 
       <div class="col-md-3"><button type="submit" style="align-self: center;" class="btn btn-primary  btn-sm" ng-disabled="form.$invalid">Create</button></div>
     </div>

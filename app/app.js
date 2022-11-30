@@ -83,6 +83,7 @@
             //
             additem:'http://localhost:4000/api/user/additem',
             //
+            getusersAPI:'http://localhost:4000/api/user/getusersAPI',
             bycategory:'http://localhost:4000/api/user/bycategory',
             viewitemAPI: 'http://localhost:4000/api/user/viewitemAPI',
             userLoginApi: 'http://localhost:4000/api/user/login',

@@ -13,10 +13,12 @@
                 <img src="{{d.link}}" style="height:150px;width: 150px;;">
                 <div class="row mt-2" style="text-align: center;justify-content: space-around;">
                   <div class="col "><div style="margin:auto">
-                    <h3 style="color: rgb(157, 243, 157);">rs:32109</h3></div>
+                    <h3 style="color: rgb(157, 243, 157);">₹{{d.price}}</h3></div>
+                    <p>{{d.Des}}</p>
                   </div>
+                  
                 </div>
-                <div class="row" style="text-align: center;justify-content: space-around;">
+                <div class="row mt-1" style="text-align: center;justify-content: space-around;">
                   <h5><i class="bi bi-cart-plus-fill sm " ng-click="addcart(d)"></i></h5>
                 </div>
                 </button>

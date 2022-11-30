@@ -3,6 +3,34 @@ a{
   color: inherit;     
 }
 
+body{
+  background:url(./../../bg.jpg);
+  background-size: cover;
+}
+
+.btn-outline-secondary
+{
+  color:#2E8BC0 !important;
+  border: 2px solid white !important;
+  background-color: white;
+}
+
+nav{
+  opacity: 60%;
+}
+.opa
+{
+  opacity: 80%;
+}
+.opa:hover
+{
+  opacity: 100%;
+}
+
+nav:hover{
+  opacity: 100%;
+}
+
 .mobile{
   display: none; /*hides short title*/
 }
@@ -51,6 +79,10 @@ a{
   .mainNav{
     background-color: #e9e9e9 !important ;
   }
+
+ 
+
+
 
   .nav-item .btn
   {
