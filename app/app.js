@@ -30,64 +30,14 @@
                 controller: "dashboardController"
                
             })
-            .state("checkstatus",{
-                url:"/check",
-                templateUrl:"/views/user/chceck.html",
-                controller:"checkstatus"
-            })
-          
-           //to be present 
-            .state("managecontract", {
-                parent:"home",
-                url: "/hr/managecontract",
-                views: {
-                    'tasks@home':{
-                        templateUrl: "/views/hr_cell/contractorSelector.html",
-                        controller: "hrcellController"
-                    }   
-                }
             
-            })
-            .state("Schedule TimeTable", {
-                parent:"home",
-                url: "/edit/timetable",
-                views: {
-                    'tasks@home':{
-                        templateUrl: "/views/timetablesetter/edit.html",
-                        controller: "timetableedit"
-                    }   
-                }
-            
-            })
             .state("Change Password", {
                 parent:"home",
                 url: "/changepassword",
                 views: {
                     'tasks@home':{
-                        templateUrl: "/views/timetablesetter/changepassword.html",
+                        templateUrl: "/views/managment/changepassword.html",
                         controller: "changepass"
-                    }   
-                }
-            
-            })
-            .state("Add faculty", {
-                parent:"home",
-                url: "/edit/Addfaculty",
-                views: {
-                    'tasks@home':{
-                        templateUrl: "/views/timetablesetter/facultyadd.html",
-                        controller: "addfacc"
-                    }   
-                }
-            
-            })
-            .state("setprefered", {
-                parent:"home",
-                url: "/set/prefered",
-                views: {
-                    'tasks@home':{
-                        templateUrl: "/views/timetablesetter/prefered.html",
-                        controller: "prefered"
                     }   
                 }
             
@@ -105,90 +55,13 @@
             
             })
             //
-            .state("customsearch", {
-                parent:"home",
-                url: "/view/custom",
-                views: {
-                    'tasks@home':{
-                        templateUrl: "/views/user/custom.html",
-                        controller: "hrcellController"
-                    }   
-                }
-            
-            })
-         
-
-               //to present 
-                    .state("conreg", {
-                        parent:"home",
-                        url: "/hr/contractorregistration",
-                        views: {
-                            'tasks@home':{
-                                templateUrl: "/views/hr_cell/contractorRegistration.html",
-                                controller: "hrcellController"
-                            }   
-                        }
-                    
-                    })
-                    .state("viewprofile", {
-                        parent:"home",
-                        url: "/home/viewprofile",
-                        views: {
-                            'tasks@home':{
-                                templateUrl: "/views/user/profile.html",
-                                controller: "hrcellController"
-                            }   
-                        }
-                    
-                    })
-          
-            //to present 
-            .state("faculty",{
-                parent:"home",
-                url:"home/faculty",
-                views:{
-                    'tasks@home':{
-                        templateUrl:"/views/timetablesetter/faculty.html",
-                        controller:"faculty"
-                    }
-                }
-            })
-            .state("Add subjects",{
-                parent:"home",
-                url:"home/subjects",
-                views:{
-                    'tasks@home':{
-                        templateUrl:"/views/timetablesetter/addsubjects.html",
-                        controller:"addsub"
-                    }
-                }
-            })
-            .state("Add Department",{
-                parent:"home",
-                url:"home/Department",
-                views:{
-                    'tasks@home':{
-                        templateUrl:"/views/timetablesetter/addDepartment.html",
-                        controller:"addDept"
-                    }
-                }
-            })
-            .state("Dept details",{
-                parent:"home",
-                url:"home/rooms",
-                views:{
-                    'tasks@home':{
-                        templateUrl:"/views/timetablesetter/deptdetails.html",
-                        controller:"build"
-                    }
-                }
-            })
+           
             .state("User Managemnt",{
                 parent:"home",
                 url:"home/userManagment",
                 views:{
                     'tasks@home':{
-                        templateUrl:"/views/timetablesetter/usermanagment.html",
+                        templateUrl:"/views/managment/usermanagment.html",
                         controller:"usermanag"
                     }
                 }
@@ -204,22 +77,6 @@
                     }
                 }
             })
-            .state("processbill",{
-                parent:"home",
-                url:"/process/bill",
-                views:{
-                    'tasks@home':{
-                        templateUrl:"/views/user/processBill.html",
-                        controller:"fagController"
-                    }
-                }
-            })
-         
-       
-            
-          
-   
-           
    
         })
         .constant("globalConfig", {

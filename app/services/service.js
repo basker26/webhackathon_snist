@@ -9,6 +9,7 @@
     function userService($http, globalConfig) {
         
         var service = {};
+        service.additem=additem;
         service.bycategory=bycategory;
         service.viewitem=viewitem;
         service.Login = Login;

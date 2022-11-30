@@ -194,83 +194,9 @@ router.post("/login",function(req,res){
         }
     });
 })
-.get("/timetable",checkSignIn,function(req,res){
-    connection.query("SELECT  day, p1, p2, p3, p4, p5, p6, p7, p8 FROM clmsdb.time_table where course='BE' and year ='2' and sem='3' and department_name ='BME'",function(err,data){
-        if(err) throw err;
-        else {
-            //    (data);
-            res.send(response(true,"true",data));}
-    })
-  
-})
-.post("/deletearchive",checkSignIn,function(req,res){
-    var body=req.body;
-    connection.query("DELETE FROM `clmsdb`.`time_table` WHERE (`combid` = ?  and active =0)",[body.id],function(err,data){
-        if(err) throw err;
-        else{
-            res.send(response(true,"sucess",null));
-        }
-    })
-})
-.post("/deleteshedule" , checkSignIn,function(req,res){
-    var body=req.body;
-    connection.query("SELECT class_id FROM clmsdb.lecturer_details where active=1 and allotid in (SELECT theoryfacallt FROM clmsdb.theory_fac_allotment where sub_id in (SELECT sub_id FROM clmsdb.subject_info where subinfo=?) union SELECT labfacallt FROM clmsdb.lab_faculty_allotment where subcode in (SELECT sub_id FROM clmsdb.subject_info where subinfo=?))",[body.id,body.id],function(err,data){
-        if(err) throw err;
-        else{
-            console.log(data,"heiii")
-            data.forEach(element => {
-                connection.query("DELETE FROM `clmsdb`.`lecturer_details` WHERE (`class_id` = ?)",[element.class_id],function(err,data1){
-                    if(err) throw err;
-                    else{
 
-                    }
-                })
-            });    
-        }
-    })
-    connection.query("SELECT sno FROM clmsdb.time_table where combid=? and active=1",[body.id],function(err,data){
-        if(err) throw err;
-        else{
-            data.forEach(element=>{
-                connection.query("UPDATE `clmsdb`.`time_table` SET `active` = '0' WHERE (`sno` = ?)",[element.sno],function(err,data){
-                    if(err) throw err;
-                    else{
 
-                    }
-                })
-            });
-            res.send(response(true,"sucess",null))
-            
-        }
-    });
-})
-.post("/addrooms",checkSignIn,function(req,res){
-    console.log(req.body);
-    connection.query("INSERT INTO `clmsdb`.`building_room` (`building_name`, `room_no`) VALUES (?,?)",[req.body.dept,req.body.room],function(err,data){
-        if(err) throw err;
-        else{
-            res.send(response(true,"sucess",null));
-        }
-    })    
-    // res.send(response(true,"sucess",null));
-})
-.post("/deleteroom",checkSignIn,function(req,res){
-    // console.log(req.body);
-    connection.query("DELETE FROM `clmsdb`.`building_room` WHERE (`idnew_table` = ?)",[req.body.id],function(err,data){
-        if(err) throw err;
-        else{
-            res.send(response(true,"sucess",null));
-        }
-    })
-})
-.post("/getrooms",checkSignIn,function(req,res){
-    connection.query("SELECT * FROM clmsdb.building_room",function(err,data){
-        if(err) throw err;
-        else{
-            res.send(response(true,"sucesss",data));
-        }
-    })
-})
+
 .post("/addDepartment",checkSignIn,function(req,res){
     var body=req.body;
     console.log(body)
