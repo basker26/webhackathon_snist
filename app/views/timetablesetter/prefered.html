@@ -1,0 +1,37 @@
+<div class="bg-dark full_width" style="height: fit-content;width:100%;padding: 1% 2%;">
+    <div class="row" style="justify-content: center;" >
+        <div class="col-11 col-md-2">
+            <select  ng-model="dept.dept" class="form-select form-select-sm " aria-label=".form-select-sm example">
+                <option selected>Select Department</option>
+                <option ng-repeat="d in data.data" value={{d.department}}>{{d.department}}</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.dept" ng-model="dept.grad" class="form-select form-select-sm "
+                aria-label=".form-select-sm example">
+                <option selected>Select Graduation</option>
+                <option ng-repeat="d in data.data1" value={{d.course}}>{{d.course}}</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.grad" ng-model="dept.spelization" class="form-select form-select-sm"
+                aria-label=".form-select-sm example">
+                <option ng-repeat="d in data.data2 | filter:{course:dept.grad,department:dept.dept}"
+                    value={{d.specilization}}>{{d.specilization}}</option>
+
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.spelization" ng-model="dept.sem" class="form-select form-select-sm"
+                aria-label=".form-select-sm example">
+                <option
+                    ng-repeat="d in data.data3 | filter:{course:dept.grad,department:dept.dept,specilization:dept.spelization}"
+                    value={{d.id}}>{{d.semester}}</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <button ng-disabled="!dept.sem" type="submit" class="btn btn-primary " ng-click="addprefered(dept)" style="background-color: #e96b56;
+              border-radius: 5px;font-size: small;font-weight:bolder;">Create</button>  
+        </div>
+    </div>
+</div>

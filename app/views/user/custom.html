@@ -1,0 +1,175 @@
+
+  <div class="bg-dark customs" style="height: fit-content;width:100%;padding: 1% 2%;">
+    <div class="row" style="justify-content: center;">
+        <div class="col-6 col-md-2 mt-1">
+        <select ng-model="dept.dept" class="form-select form-select-sm full" aria-label=".form-select-sm example">
+            <option selected>Select Department</option>
+            <option ng-repeat="d in filterdata.data" value={{d.department}}>{{d.department}}</option>
+        </select>
+        </div>
+        <div class="col-6 col-md-2 mt-1">
+        <select ng-disabled="!dept.dept" ng-model="dept.grad" class="form-select form-select-sm full " aria-label=".form-select-sm example">
+            <option selected>Select Graduation</option>
+            <option ng-repeat="d in filterdata.data1" value={{d.course}}>{{d.course}}</option>
+        </select>
+        </div>
+        <div class="col-6 col-md-2 mt-1">
+        <select ng-disabled="!dept.grad" ng-model="dept.specilization" class="form-select form-select-sm full" aria-label=".form-select-sm example">
+            <option selected>Select spelization</option>
+            <option ng-repeat="d in filterdata.data2 | filter:{course:dept.grad,department:dept.dept}" value={{d.specilization}}>{{d.specilization}}</option>
+           
+          </select>
+        </div>
+        <div class="col-6 col-md-2 mt-1">
+        <select ng-disabled="!dept.specilization"  ng-model="dept.sem" class="form-select form-select-sm full" aria-label=".form-select-sm example">
+            <option selected> Select Semester</option>
+            <option ng-repeat="d in filterdata.data3 | filter:{course:dept.grad,department:dept.dept,specilization:dept.specilization}" value={{d.id}}>{{d.semester}}</option>
+        </select>
+        </div>
+        <div class="col-3 col-md-2 mt-1">
+            <button ng-disabled="!dept.sem" type="submit"  class="btn btn-primary " ng-click="getweekrpt(dept)" style="background-color: #e96b56;
+            border-radius: 5px;font-size: small;font-weight:bolder;">View</button>
+        </div>
+    </div>
+  </div>
+
+  <div  class="table-responsive" >
+      <!-- <div class="shadow p-3 mb-5  rounded responsivebg" style="background-color:#faf9f6;width:220px;align-content: center;" > -->
+    <div class="mobiletable">
+    <table id="exportthis" class="table table-bordered" ng-if="weekdata" style="width: 1400px;height: 280px">
+    <thead>
+          <th style="padding: 0px;"><h6><strong>DAY </strong></h5></th>
+          <th style="text-align: center; padding: 0px;">9:00-10:00</th>
+          <th style="text-align: center;padding: 0px;">10:00-11:00</th>
+          <th style="text-align: center;padding: 0px;">11:00-12:00</th>
+          <th style="text-align: center;padding: 0px;">12:00-1:00</th>
+          <!-- <th style="text-align: center;">1:00-2:00</th> -->
+          <th style="text-align: center;padding: 0px;">2:00-3:00</th>
+          <th style="text-align: center;padding: 0px;">3:00-4:00</th>
+          <th style="text-align: center;padding: 0px;">4:00-5:00</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <!-- ng-init="seggregate(f)" -->
+        <!-- ng-attr-colspan="{{f.sem}}" -->
+      <tr ng-repeat="f in weekdata.datas"  ng-init="seggregate(f)">
+         <td >{{f.day}}</td>
+         <td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}"  style="text-align: center;">{{f.p1}}</td>
+         <td ng-if="f.p2b" ng-attr-colspan="{{f.p2col}}"  style="text-align: center;">{{f.p2}}</td>
+         <td ng-if="f.p3b" ng-attr-colspan="{{f.p3col}}"  style="text-align: center;">{{f.p3}}</td>
+         <td ng-if="f.p4b" ng-attr-colspan="{{f.p4col}}"  style="text-align: center;">{{f.p4}}</td>
+         <!-- <td>{{f.p5}}</td> -->
+         <td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}"  style="text-align: center;">{{f.p6}}</td>
+         <td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}"   style="text-align: center;">{{f.p7}}</td>
+         <td ng-if="f.p8b" ng-attr-colspan="{{f.p8col}}"   style="text-align: center;">{{f.p8}}</td>
+       
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <table class="table table-striped" id="exportthis1">
+    <thead>
+        <tr>
+          <th>S no</th>  
+          <th scope="col">Subject Name</th>
+          <th scope="col">Elective</th>
+
+          <th scope="col">Faculty Name</th>
+
+        </tr>
+      </thead>
+    <tbody>
+      <tr ng-repeat="p in weekdata.theory">
+          <td>{{$index+1}}</td>
+          <td>{{p.sub_name}}</td>
+          <td>{{p.elective}}</td>
+
+          <td>{{p.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped" id="exportthis2">
+    <thead>
+        <tr>
+          <th>S no</th>  
+          <th scope="col">Subject Name</th>
+          <th scope="col">Elective</th>
+
+          <th scope="col">Batch</th>
+          <th scope="col">Facultys</th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr ng-repeat="p in weekdata.lab">
+          <td>{{$index+1}}</td>
+          <td>{{p.sub_name}}</td>
+          <td>{{p.elective}}</td>
+          <td>{{p.batch}}</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td ><H6>{{p.faculty}}</H6><h6 ng-repeat ="q in weekdata.data2" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6><h6 ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6><h6 ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr>
+      </tbody>
+  </table>
+</div>
+
+<!-- <div ng-hide="!fi.check">
+   -->
+   <!-- <div> -->
+  <!-- <div class="myDIV" ng-hide="fi.check">{{fi.check}}</div> -->
+  <!-- <div class="hide"> -->
+    <!-- <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>S no</th>  
+            <th scope="col">Subject Name</th>
+            <th scope="col">Elective</th>
+
+            <th scope="col">Faculty Name</th>
+
+          </tr>
+        </thead>
+      <tbody>
+        <tr ng-repeat="p in weekdata.theory">
+            <td>{{$index+1}}</td>
+            <td>{{p.sub_name}}</td>
+            <td>{{p.elective}}</td>
+
+            <td>{{p.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>S no</th>  
+            <th scope="col">Subject Name</th>
+            <th scope="col">Elective</th>
+
+            <th scope="col">Batch</th>
+            <th scope="col">Faculty1</th>
+            <th scope="col">Faculty2</th>
+            <th scope="col">Faculty3</th>
+            <th scope="col">Faculty4</th>
+          </tr>
+        </thead>
+      <tbody>
+        <tr ng-repeat="p in weekdata.lab">
+            <td>{{$index+1}}</td>
+            <td>{{p.sub_name}}</td>
+            <td>{{p.elective}}</td>
+            <td>{{p.batch}}</td>
+            <td>{{p.faculty}}</td>
+            <td ng-repeat ="q in weekdata.data2" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+            <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+            <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+        </tr>
+      </tbody>
+    </table> -->
+  <!-- </div> -->
+<div class=" container row justify-content-center"><div class="col-2" > <button class= "btn btn-secondary" ng-click="export()">generate pdf</button>
+</div></div> </div>

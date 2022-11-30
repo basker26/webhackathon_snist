@@ -1,0 +1,134 @@
+<!-- <div class="filter">
+  <div class="row">
+    <div class="col-4 col-md-3" style="justify-content: right;display: flex;">
+      <div style="width: fit-content;"><h6 style="color:white;">Select Department</h6></div>
+    </div>
+    <div class="col-6 col-md-3">      
+    <select ng-model="selecteddepart" style=" border-color: #6c757d; border-radius: 5px;" ng-change="gettimebydept(selecteddepart,day)"  >
+    <option ng-repeat="d in deptdata" value={{d}} >{{d.department_name}}           {{d.building_name}}</option>
+    </select>
+  </div>
+
+  <div class="col-4 col-md-3" style="justify-content: right;display: flex;" >
+    <div style="width: fit-content;"> <h6 style="color:white;">Day select</h6></div>
+  </div>
+<div class="col-6 col-md-3" >
+  
+    <select  style=" border-color: #6c757d; border-radius: 5px;"  ng-model="day" ng-change="gettimebydept(selecteddepart,day)" >
+    <option ng-repeat="f in timetabledata.data3"  value={{f.day}}>{{f.day}}</option>
+  </select>
+
+</div>
+
+</div>
+</div> -->
+<div class="table-responsive" ng-repeat="fi in finaldata" style="margin: 2% 2% 2% 2%;">
+  <div class="shadow p-3 mb-5  rounded responsivebg"  style="background-color:#FAF9F6" >
+    <div class="container" style="margin-left: 50px;">
+      <div class="row mb-3">
+        <div class="col-6 col-md-2 mb-3">
+          <h6 style="color:#ce8579;">Program</h6><h6 >{{fi.info[0].course}}</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h6 style="color:#ce8579;">Specialisation</h6><h6>{{fi.info[0].specilization}}</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h6 style="color:#ce8579;">Day</h6><h6>{{fi.info[0].day}}</h6>
+        </div>
+
+        <div class="col-6 col-md-2 mb-3" >
+          <h6 style="color:#ce8579;"> Semester</h6><h6>{{fi.info[0].semester}}</h6>
+            
+          </select>
+        
+        </div>
+        <div class="col-6 col-md-2 mb-3" style="display:flex; align-items: center;" >
+          <div class="filter" style="height: fit-content;">
+          <button type="button" class="btn btn-secondary" ng-disabled="!fi.check" ng-click="weekreport(fi.info[0].id)">view</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <h6 style="color:#ce8579;">Course</h6><h6 >{{fi[0].course}}</h6><h6 style="color:#ce8579;">Specialisation</h6><h6>{{fi[0].specialisation}}</h6><h6 style="color:#ce8579;">Day</h6><h6>{{fi[0].day}}</h6> -->
+    <table class="table table-bordered" ng-hide="!fi.check">
+      <thead>
+        <!-- <tr>
+          <th>{{fi[0].course}}</th>
+          <th></th>
+          <th>{{fi[0].specialisation}}</th>
+          <th>{{fi[0].day}}</th>
+        </tr>
+        <tr> -->
+            <!-- <th><h6><strong>Sem&</strong> </h5><h6><strong>Room no </strong></h5></th> -->
+            <th style="text-align: center;">9:00-10:00</th>
+            <th style="text-align: center;">10:00-11:00</th>
+            <th style="text-align: center;">11:00-12:00</th>
+            <th style="text-align: center;">12:00-1:00</th>
+            <!-- <th style="text-align: center;">1:00-2:00</th> -->
+            <th style="text-align: center;">2:00-3:00</th>
+            <th style="text-align: center;">3:00-4:00</th>
+            <th style="text-align: center;">4:00-5:00</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="f in fi.datas"  ng-init="seggregate(f)">
+           <td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}"  ng-style="{'background-color': (time>=f.p1t[0] && time< f.p1t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p1}}</td>
+           <td ng-if="f.p2b" ng-attr-colspan="{{f.p2col}}" ng-style="{'background-color': (time>=f.p2t[0] && time< f.p2t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p2}}</td>
+           <td ng-if="f.p3b" ng-attr-colspan="{{f.p3col}}" ng-style="{'background-color': (time>=f.p3t[0] && time< f.p3t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p3}}</td>
+           <td ng-if="f.p4b" ng-attr-colspan="{{f.p4col}}" ng-style="{'background-color': (time>=f.p4t[0] && time< f.p4t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p4}}</td>
+           <td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" ng-style="{'background-color': (time>=f.p6t[0] && time < f.p6t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p6}}</td>
+           <td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}"  ng-style="{'background-color': (time>=f.p7t[0] && time < f.p7t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p7}}</td>
+           <td ng-if="f.p8b" ng-attr-colspan="{{f.p8col}}"  ng-style="{'background-color': (time>=f.p8t[0] && time < f.p8t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p8}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-hide="true">
+    <!-- <div class="myDIV" ng-hide="fi.check">{{fi.check}}</div> -->
+    <!-- <div class="hide"> -->
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>S no</th>  
+              <th scope="col">Subject Name</th>
+              <th scope="col">Faculty Name</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr ng-repeat="p in fi.theory">
+              <td>{{$index+1}}</td>
+              <td>{{p.sub_name}}</td>
+              <td>{{p.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="listbox" >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>S no</th>  
+              <th scope="col">Subject Name</th>
+              <th scope="col">Batch</th>
+              <th scope="col">Faculty1</th>
+              <th scope="col">Faculty2</th>
+              <th scope="col">Faculty3</th>
+              <th scope="col">Faculty4</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr ng-repeat="p in fi.lab">
+              <td>{{$index+1}}</td>
+              <td>{{p.sub_name}}</td>
+              <td>{{p.batch}}</td>
+              <td>{{p.faculty}}</td>
+              <td ng-repeat ="q in fi.data2" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+              <td ng-repeat ="q in fi.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+              <td ng-repeat ="q in fi.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div> 
+  </div>     
+  </div>

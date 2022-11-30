@@ -1,0 +1,35 @@
+<div  style="align-content: center;margin: auto;align-content: space-around;">
+  <table class="table table-bordered">
+      
+    <thead>
+     <tr>
+      
+      <th scope="col">DAY</th> 
+      <th scope="col">9-10</th>
+      <th scope="col">10-11</th>
+      <th scope="col">11-12</th>
+      <th scope="col">12-1</th>
+      <th scope="col">1-2</th>
+      <th scope="col">2-3</th>
+      <th scope="col">3-4</th>
+      <th scope="col">4-5</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in test" >
+        <td>{{item.day}}</td>
+
+        <td ng-if="item.p1b" colspan="item.p1col">{{item.p1}}</td>
+        <td ng-if="item.p2b" colspan="item.p2col">{{item.p2}}</td>
+        <td ng-if="item.p3b" colspan="item.p3col">{{item.p3}}</td>
+        <td ng-if="item.p4b" colspan="item.p4col">{{item.p4}}</td>
+        <td >{{item.p5}}</td>
+        <td ng-if="item.p6b" colspan="item.p6col">{{item.p6}}</td>
+        <td ng-if="item.p7b" colspan="item.p7col">{{item.p7}}</td>
+        <td ng-if="item.p8b" colspan="item.p8col">{{item.p8}}</td>
+
+      </tr>
+    </tbody>
+    </table>
+    <!-- <input type="button" ng-click="segregate()"> -->
+</div>

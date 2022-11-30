@@ -1,0 +1,78 @@
+<div class="row mycard mt-0">
+
+<div class="col-6">
+    <h6>Department:</h6>
+    <select class="form-control form-control-sm" style="max-width: 40%;"  aria-label="Default select example" ng-model="filter">
+        <option ng-repeat="d in data" value="{{d.department}}">{{d.department}}</option>
+    </select>
+</div>
+<div class="col-6">
+    <h6>Faculty:</h6>
+    <select class="form-control form-control-sm" style="max-width: 40%;" ng-disabled="!filter"  aria-label="Default select example" ng-model="faculty" ng-change="viewfaculty(faculty)">
+        <option ng-repeat="d in facdata | filter:{department:filter}" value="{{d.id}}">{{d.name}}</option>
+    </select>
+
+</div>
+</div>
+
+<div class="table-responsive mb-4" ng-repeat="fi in details" style="width:95% ; margin:auto" >
+    <!-- <div class="shadow p-3 mb-5  rounded responsivebg"  style="background-color:#FAF9F6" > -->
+      <!-- <div class="container" style="margin-left: 50px;">
+        <div class="container" style="margin-left: 5u0px;"> -->
+            <div class="row mb-3 divisioncards">
+              <div class="col-6 col-md-2 mb-3" style="margin-left:2% ;" >
+                <h6 style="color:#ce8579;">Day</h6><h6 >{{fi.day}}</h6>
+              </div>
+              <div style="width:100% ;border-top-left-radius: 20px;">
+              <table class="table table-bordered" style="border-radius:50px;">
+                <thead>
+                    <tr>
+                        <th>
+                            Subject Name
+                        </th>
+                        <th>
+                            Duration
+                        </th>
+                        <th>
+                            Venue
+                        </th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr ng-repeat="f in fi.theory">
+                        <td>{{f.sub_name}}</td>
+                        <td>{{f.d_from}} - {{f.d_to}}</td>
+                        <td>{{f.buildingroom_name}} block , {{f.room_no}} room</td>
+                    </tr>
+                </tbody> 
+              </table>
+            </div>
+              <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            Subject Name
+                        </th>
+                        <th>
+                            Batch
+                        </th>
+                        <th>
+                            Duration
+                        </th>
+                        <th>
+                            Venue
+                        </th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr ng-repeat="f in fi.lab">
+                        <td>{{f.sub_name}}</td>
+                        <td>{{f.batch}}</td>
+                        <td>{{f.d_from}} - {{f.d_to}}</td>
+                        <td>{{f.buildingroom_name}} block {{f.room_no}} room</td>
+                    </tr>
+                </tbody> 
+              </table>
+      </div>
+    <!-- </div> -->
+</div>

@@ -1,0 +1,100 @@
+<div class="bg-dark full_width" style="height: fit-content;width:100%;padding: 1% 2%;">
+    <div class="row" style="justify-content: center;" ng-show="visible">
+        <div class="col-11 col-md-2">
+            <select  ng-model="dept.dept" class="form-select form-select-sm " aria-label=".form-select-sm example">
+                <option selected>Select Department</option>
+                <option ng-repeat="d in data.data" value={{d.department}}>{{d.department}}</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.dept" ng-model="dept.grad" class="form-select form-select-sm "
+                aria-label=".form-select-sm example">
+                <option selected>Select Graduation</option>
+                <option ng-repeat="d in data.data1" value={{d.course}}>{{d.course}}</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.grad" ng-model="dept.spelization" class="form-select form-select-sm"
+                aria-label=".form-select-sm example">
+                <option ng-repeat="d in data.data2 | filter:{course:dept.grad,department:dept.dept}"
+                    value={{d.specilization}}>{{d.specilization}}</option>
+
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.spelization" ng-model="dept.sem" class="form-select form-select-sm"
+                aria-label=".form-select-sm example">
+                <option
+                    ng-repeat="d in data.data3 | filter:{course:dept.grad,department:dept.dept,specilization:dept.spelization}"
+                    value={{d.id}}>{{d.semester}}</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <button ng-disabled="!dept.sem" type="submit" class="btn btn-primary " ng-click="addsubjects(dept)" style="background-color: #e96b56;
+              border-radius: 5px;font-size: small;font-weight:bolder;">Create</button>  
+        </div>
+    </div>
+</div>
+<div class="container featured mt-2 sub-add">
+<div class="row justify-content-center icon-box2" >
+<div class="col-lg-12"  ng-show="addsub">
+    <form name="form" ng-submit="addsubject(sub)" role="form" class="addsubform">
+        <h4 style="color:#e96b56">Add Subjects for Department : {{dept.dept}} Course: {{dept.grad}}</h4>
+        <br>
+        <div class="form-row">
+            <div class="form-group col">
+                <h6>Subject</h6>
+              <input type="text" class="form-control" placeholder="Subject Name" name="subjectname" id="subjectname" ng-model="sub.name" class="form-control" required/>
+                <span ng-show="form.subjectname.$dirty && form.subjectname.$error.required" class="help-block">Subject Name Required</span>
+            </div>
+            <div class="form-group col">
+                <h6>Subject Abbrivation</h6>
+              <input type="text" class="form-control" placeholder="Subject Abbrevation" name="subjectAbbr" id="subjectAbbr" class="form-control" ng-model="sub.abbr">
+              <span ng-show="form.subjectAbbr.$dirty && form.subjectAbbr.$error.required" class="help-block">Subject abbr Required</span>
+                
+            </div>
+            <div class="form-group col">
+                <h6>Type</h6>
+                <select ng-model="sub.type" class="form-control" placeholder="Subject Type" id="Subjecttype" name="Subjecttype" class="form-control" required>
+                <span ng-show="form.Subjecttype.$dirty && form.Subjecttype.$error.required" class="help-block">Subject type Required</span>
+                    
+                    <!-- <option selected>Choose...</option> -->
+                    <option value="Lab">Lab</option>
+                    <option value="Theory">Theory</option>
+                </select>
+            </div>
+            <div class="form-group col">
+                <h6>Elective</h6>
+              <input type="text" class="form-control" placeholder="Elective Name" name="subjectname" id="subjectname" ng-model="sub.elective" class="form-control" >
+               
+            </div>
+            <div class="form-group col">
+                <br>
+                <button  class="btn btn-primary mb-2"  style="padding: 3% 3%;width: 100%;
+                height: calc(1.5em + .75rem + 2px);" ng-disabled="form.$invalid">ADD</button>
+            </div>
+        </div>
+    </form>
+    <table>
+        <thead>
+            <th>Subject Name</th>
+            <th>Subject abbrevation</th>
+            <th>Subject type</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="a in sublist track by $index">
+                <td>{{a.name}}</td>
+                <td>{{a.abbr}}</td>
+                <td>{{a.type}}</td>
+                <td>
+                    <button ng-click="deletesub($index)">Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-secondary" ng-click="confirm(sublist,dept)">confirm</button>
+</div>
+</div>
+</div>

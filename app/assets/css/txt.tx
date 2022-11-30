@@ -1,0 +1,4 @@
+SELECT facid FROM clmsdb.lecturer_details,theory_fac_allotment where day=var1 and  d_from<=var3  and d_to>=var4 and active>0 and allotid not in (SELECT allotid
+						FROM clmsdb.lecturer_details where allotid in (
+						SELECT theoryfacallt FROM clmsdb.theory_fac_allotment where sub_id in (SELECT sub_id FROM clmsdb.subject_info where subinfo=var2) union 
+						SELECT labfacallt FROM clmsdb.lab_faculty_allotment where subcode in (SELECT sub_id FROM clmsdb.subject_info where subinfo=var2)) and active=1)  and  theoryfacallt=allotid union 

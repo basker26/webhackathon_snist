@@ -1,0 +1,81 @@
+<div class="bg-dark full_width" style="height: fit-content;width:100%;padding: 1% 2%;">
+    <div class="row" style="justify-content: center;" >
+        <div class="col-11 col-md-2">
+            <select  ng-model="dept.dept" ng-change="getdetails(dept.dept)" class="form-select form-select-sm " aria-label=".form-select-sm example">
+                <option selected>Select Department</option>
+                <option ng-repeat="d in data.data" value={{d.department}}>{{d.department}}</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.dept" ng-model="dept.day" class="form-select form-select-sm "
+                aria-label=".form-select-sm example">
+                <option selected>Day</option>
+                <option  value="Monday">Monday</option>
+                <option  value="Tuesday">Tuesday</option>
+                <option  value="Wednesday">Wednesday</option>
+                <option  value="Thursday">Thursday</option>
+                <option  value="Friday">Friday</option>
+                <option  value="Saturday">Saturday</option>
+            </select>
+        </div>
+        <div class="col-11 col-md-2">
+            <select ng-disabled="!dept.dept" ng-model="dept.room" class="form-select form-select-sm"
+                aria-label=".form-select-sm example">
+                <option ng-repeat="d in rooms.rooms | filter:{building_name:dept.dept}"
+                    value={{d.room_no}}>{{d.room_no}}</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="table-responsive mb-4"  style="width:95% ; margin:auto" >
+  <!-- <div class="shadow p-3 mb-5  rounded responsivebg"  style="background-color:#FAF9F6" > -->
+    <!-- <div class="container" style="margin-left: 50px;">
+      <div class="container" style="margin-left: 5u0px;"> -->
+          <div class="row mb-3 divisioncards">
+<table class="table-responsive mb-4 table table-bordered">
+    <thead>
+      <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Venue</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Faculty Names</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="d in rooms.lab[0] | filter:{room_no:dept.room,day:dept.day}">
+            <td>{{d.day}}</td>
+            <td>{{d.room_no}}</td>
+            <td>{{d.d_from}}-{{d.d_to}}</td>
+            <td><h7 ng-repeat="i in rooms.fac" ng-if="i.id==d.faccode1">{{i.name}} </h7><h7 ng-repeat="i in rooms.fac" ng-if="i.id==d.faccode2">{{i.name}} </h7><h7 ng-repeat="i in rooms.fac" ng-if="i.id==d.faccode3">{{i.name}} </h7><h7 ng-repeat="i in rooms.fac" ng-if="i.id==d.faccode4">{{i.name}} </h7></td>
+            <td>{{d.sub_abbr}}</td>
+            <td>{{d.course}}({{d.specilization}})-{{d.semester}}</td>
+          </tr>
+    </tbody>
+  </table>
+  <table class="table-responsive mb-4 table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Faculty Name</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="d in rooms.thoery[0] | filter:{room_no:dept.room,day:dept.day}">
+        <td>{{d.day}}</td>
+        <td>{{d.room_no}}</td>
+        <td>{{d.d_from}}-{{d.d_to}}</td>
+        <td  ><h7 ng-repeat="i in rooms.fac" ng-if="i.id===d.facid">{{i.name}}</h7></td>
+        <td>{{d.sub_abbr}}</td>
+        <td>{{d.course}}({{d.specilization}})-{{d.semester}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>

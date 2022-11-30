@@ -1,0 +1,114 @@
+<div style="background-color: aliceblue;"> 
+  <div class="row" style="padding:0% 10% ;">
+    <div class="col d-flex justify-content-center" ng-repeat = "task in tasktypelist">
+    <div class="full"><button  type="button" class="btn btn-outline-secondary full" ui-sref="{{task.statename}}">{{task.description}}</button>
+</div>
+</div>
+</div>
+  <!-- <div class="col-auto mb-3">
+    
+      <div class="card" style="width: 20rem; height:13rem;padding:20px;margin-top: 150px;">
+       <h5 class="card-title">{{task.view_name}}</h5>
+       <p class="card-text">{{task.description}}</p>
+       
+        
+
+        <a ui-sref="{{task.statename}}" class="stretched-link">{{task.task_link}}</a>
+
+      </div>
+  
+  </div>     -->
+</div>
+<!-- <div class="container" >
+    <div class="row" style="padding-top: 30px;">
+      
+      
+    </div> 
+   </div> -->
+</div>
+  
+<section id="featured" class="featured">
+  <div class="container">
+    <div class="row pt-3" >
+
+      <div class="col" style="margin: 2%; height: auto; width: auto;" ng-repeat="d in deptdata">
+        <div class="icon-box">
+          <button ng-click="selectdepart(d)">
+          <!-- x<i class="bi bi-card-checklist"></i> -->
+          <h3>{{d.building_name}}</h3>
+          <!-- <p>{{d.description}}
+          </p> -->
+          <img src="{{d.description}}" style="height:150px;width: 150px;;">
+
+          </button>
+        </div>
+      </div>
+      <!-- <div class="col-lg-3 mt-4 mt-lg-0">
+        <div class="icon-box">
+          <button ui-sref='timetable' ng-click='timetable(4,5)'>
+          <i class="bi bi-code-slash"></i>
+          <h3>Computer Science and Engineering</h3>
+          <p>Computer Science and Engineering is an academic program at university which comprises scientific and engineering aspects of computing.
+              <br>
+              <br>
+              <br>
+              <br>
+           </p>
+          </button>
+      </div>
+      </div> -->
+      <!-- <div class="col-lg-3 mt-4 mt-lg-0">
+        <div class="icon-box">
+          <button ui-sref='timetable' ng-click='timetable(4,5)'>
+          <i class="bi bi-cpu-fill"></i>
+          <h3>Electronics and Communication Engineering</h3>
+          <p>Electronic engineering is an electrical engineering discipline which utilizes nonlinear and active electrical components to design electronic circuits, devices, integrated circuits and their systems</p>
+          </button>
+      </div>
+      </div>
+      <div class="col-lg-3 mt-4 mt-lg-0">
+        <div class="icon-box">
+          <button ui-sref='timetable' ng-click='timetable(4,5)'>
+          <i class="bi bi-sliders"></i>
+          <h3>Biomedical Engineering</h3>
+          <p>Biomedical Engineering (BME) is the application of engineering principles and methods to solve medical and biological problems. It also integrates electrical, mechanical, chemical and life science principles in the development of new healthcare technologies and systems.</p>
+          </button>
+      </div>
+      </div> -->
+    </div>
+
+  </div>
+</section><!-- End Featured Section -->
+<br>
+<br>
+
+<!-- division by graduation programme -->
+<!-- <section id="featured" class="featured">
+  <div class="container">
+    <h2 class="animate__animated animate__fadeInDown" ><span>Custom Search</span></h2>
+    <div class="row">
+      <div class="col-lg-6">
+         
+        <div class="icon-box">
+          <button ui-sref='customsearch'>
+          <i class="bi bi-behance"></i>
+          <h3>Custom Search</h3>
+          <p>By clicking on this option we can perform Custom search for eg: selecting B.E 2 yr 3 Sem cse Time Table
+          </p>
+      </button>
+        </div>
+     
+      </div>
+     
+      
+    </div>
+
+  </div>
+</section> -->
+
+<br>
+<br>
+
+
+
+ 
