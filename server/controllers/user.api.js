@@ -1640,6 +1640,20 @@ router.post("/login",function(req,res){
         })
     }
 })
+///
+.post("/additem",checkSignIn,function(req,res){
+    var item =req.body;
+    console.log(item);
+    connection.query("INSERT INTO `clmsdb`.`items` (`Name`, `Des`, `link`, `quantity`, `price`) VALUES (?,?,?,?,?)",[item.name,item.desc,item.link,item.quant,item.price],function(err,data){
+        if(err)
+            throw err;
+        else{
+            res.send(response(true,"sucess",null));
+
+        }    
+    })
+})
+//
 .post("/deletefac",checkSignIn,function(req,res){
     var body=req.body;
     connection.query("DELETE FROM `clmsdb`.`user_role_mapping` WHERE (`userid` = ?)",[body.id],function(err,data){

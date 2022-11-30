@@ -8,7 +8,7 @@
     Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams', '$localStorage','$window'];
 
     function Controller($scope, $rootScope, userService, $state, $stateParams, $localStorage,$window) {
-    if($state.current.name ==  "timetable"){
+    if($state.current.name ==  "viewitem"){
         // $window.onbeforeunload =  $state.go("logout");
         //   $window.onhashchange= $state.go("logout") ;
         $rootScope.time=(new Date().getHours()-7);
